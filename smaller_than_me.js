@@ -23,7 +23,7 @@ class BinarySearchTree {
             return count
         }
         var current = this.root
-
+        console.log(current)
         while (true) {
 
             if (value < current.value) {
@@ -35,11 +35,12 @@ class BinarySearchTree {
                 current = current.left
             } else if (value > current.value) {
                 count += current.scount + current.lcount
-               
+
                 if (current.right === null) {
                     current.right = node(value)
                     return count
                 }
+
                 current = current.right
             } else if (value === current.value) {
                 count += current.lcount;
@@ -58,4 +59,3 @@ function smaller(arr) {
     return tmp;
 }
 
-console.log(smaller([5,4,3,2,1]))
