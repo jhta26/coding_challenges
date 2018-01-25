@@ -1,26 +1,3 @@
-// Node {
-//   Node l; // left child
-//   Node r; // right child
-//   int v; // value stored in the node
-// }
-// // Example tree; note the binary tree doesn't have to be complete
-//     8     <-- level 0 (root)
-//   2   3   <-- level 1
-// 4  5    1 <-- level 2
-// // Examples:
-// PrintLevel(root, 0); -> 8
-// PrintLevel(root, 1); -> 2 3
-// PrintLevel(root, 2); -> 4 5 1
-// // Complete this function
-// void PrintLevel(Node root, int level) 
-// {
-//   // for level 0, print 8
-  
-//   // for level 1, 2 3
-  
-//   // for level 2, 4, 5, 1 
-// }
-
 class BinarySearchNode {
     constructor(value, left, right) {
         this.value = value
@@ -62,32 +39,25 @@ class BinarySearchTree {
     }
 }
 
-var bst = new BinarySearchTree()
-bst.insert(5)
-bst.insert(10)
-bst.insert(1)
-bst.insert(4)
-bst.insert(6)
-bst.insert(9)
-bst.insert(11)
 
-function bfs(node, level) {
-    queue = [node]
-    while (queue.length > 0) {
-        if (level == 0) {
-            return queue.map(a=>a.show())
-        }
-        level--
-        parent = queue.shift()
-        if (parent.left) {
-            queue.push(parent.left)
-        }
-        if (parent.right) {
-            queue.push(parent.right)
-        }
+function dfs(node, array) {
+    if (node) {
+        if (!array) array = new Array()
+        var current = node
+        array.push(current.show())
 
+      	dfs(current.left,array)
+        return dfs(current.right,array)||array
     }
-    return false
 }
 
+var bst = new BinarySearchTree()
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(2)
+bst.insert(1)
+bst.insert(11)
 
+
+console.log(dfs(bst.root))
