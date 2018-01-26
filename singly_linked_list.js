@@ -45,19 +45,36 @@ class SinglyLinkedlist {
         var count = 1
         var beforeNodeToDelete = null
         var deletedNode = null
-        var nodetoDelete = null
+        var nodeToDelete = null
         if (position < 0 || position > length) {
             return 'ERROR'
         }
-        while(count<position){
-        	beforeNodeToDelete=currentNode
-        	nodeToDelete=currentNode.next
-        	count++
+        if(position==1){
+        	this.head=currentNode.next
+        	deletedNode=currentNode
+        	currentNode=null
+        	this.length--
+        	return deletedNode
         }
-        beforeNodeToDelete.next=nodeToDelete.next
-        deletedNode=nodeToDelete
-        nodeToDelete=null
+        while (count < position) {
+            beforeNodeToDelete = currentNode
+            nodeToDelete = currentNode.next
+            currentNode=currentNode.next
+            count++
+        }
+        beforeNodeToDelete.next = nodeToDelete.next
+        deletedNode = nodeToDelete
+        nodeToDelete = null
+        this.length--
         return deletedNode
     }
 
 }
+
+var sll = new SinglyLinkedlist()
+sll.add(1)
+sll.add(2)
+sll.add(3)
+sll.add(4)
+
+console.log(sll.head.next)
