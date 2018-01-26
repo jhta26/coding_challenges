@@ -40,14 +40,11 @@ class BinarySearchTree {
 }
 
 
-function dfs(node, array) {
+function dfs(node) {
     if (node) {
-        if (!array) array = new Array()
         var current = node
-        array.push(current.show())
+        return [current.show()].concat(dfs(current.left)).concat(dfs(current.right)).filter(a=>a)
 
-      	dfs(current.left,array)
-        return dfs(current.right,array)||array
     }
 }
 

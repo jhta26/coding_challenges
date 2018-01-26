@@ -15,9 +15,9 @@
 // void PrintLevel(Node root, int level) 
 // {
 //   // for level 0, print 8
-  
+
 //   // for level 1, 2 3
-  
+
 //   // for level 2, 4, 5, 1 
 // }
 
@@ -62,32 +62,37 @@ class BinarySearchTree {
     }
 }
 
-var bst = new BinarySearchTree()
-bst.insert(5)
-bst.insert(10)
-bst.insert(1)
-bst.insert(4)
-bst.insert(6)
-bst.insert(9)
-bst.insert(11)
+// var bst = new BinarySearchTree()
+// bst.insert(5)
+// bst.insert(10)
+// bst.insert(1)
+// bst.insert(4)
+// bst.insert(6)
+// bst.insert(9)
+// bst.insert(11)
+
+
 
 function bfs(node, level) {
-    queue = [node]
-    while (queue.length > 0) {
-        if (level == 0) {
-            return queue.map(a=>a.show())
+    var queue = [node]
+
+    while (level > 0) {
+        var len = queue.length
+        for (i = 0; i < len; i++) {
+
+            var parent = queue[0]
+
+            if (parent !== null) {
+                if (parent.left) {
+                    queue.push(parent.left)
+                }
+                if (parent.right) {
+                    queue.push(parent.right)
+                }
+            }
+            queue.shift()
         }
         level--
-        parent = queue.shift()
-        if (parent.left) {
-            queue.push(parent.left)
-        }
-        if (parent.right) {
-            queue.push(parent.right)
-        }
-
     }
-    return false
+    return queue.map(a => a.show())
 }
-
-
