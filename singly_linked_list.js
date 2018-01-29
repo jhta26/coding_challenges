@@ -24,7 +24,6 @@ class SinglyLinkedlist {
         currentNode.next = node
         this.length++
             return node
-
     }
     searchIndexAt(position) {
         var currentNode = this.head
@@ -49,26 +48,24 @@ class SinglyLinkedlist {
         if (position < 0 || position > length) {
             return 'ERROR'
         }
-        if(position==1){
-        	this.head=currentNode.next
-        	deletedNode=currentNode
-        	currentNode=null
-        	this.length--
-        	return deletedNode
+        if (position == 1) {
+            this.head = currentNode.next
+            deletedNode = currentNode
+            currentNode = null
+            this.length--
+                return deletedNode
         }
         while (count < position) {
             beforeNodeToDelete = currentNode
             nodeToDelete = currentNode.next
-            currentNode=currentNode.next
+            currentNode = currentNode.next
             count++
         }
         beforeNodeToDelete.next = nodeToDelete.next
         deletedNode = nodeToDelete
         nodeToDelete = null
         this.length--
-        return deletedNode
+            return deletedNode
     }
 
 }
-
-
