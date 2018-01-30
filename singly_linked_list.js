@@ -69,3 +69,41 @@ class SinglyLinkedlist {
     }
 
 }
+
+var sll = new SinglyLinkedlist()
+sll.add(1)
+sll.add(2)
+sll.add(5)
+
+console.log(sll.searchIndexAt(1))
+// class SinglyLinkedlist {
+//     constructor() {
+//         this.head = null
+//         this.length = 0
+//     }
+//     add(value) {
+//         var node = new Node(val)
+//         var current = this.head
+//         if (!current) {
+//             this.head = node
+//             this.length++
+//                 return node
+//         }
+//         while (current.next) {
+//             current = current.next
+//         }
+//         current.next = node
+//         this.length++
+//             return node
+//     }
+//     searchIndexAt(position){
+//     	var current = this.head
+//     	var length = this.length
+//     	var count =1
+//     	while(count<position){
+//     		current = current.next
+//     		count++
+//     	}
+//     	return current
+//     }
+// }
