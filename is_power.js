@@ -8,12 +8,20 @@
 // isPower(n) = false.
 
 
+var n = 9
 
-function isPower(n) {
-    if (n == 1) return true;
-    for (i = 2; i <= Math.sqrt(n); i++) {
-        for (j = 2; Math.pow(i, j) < n; j++)
-        if (Math.pow(i, j) == n) return true;
+function isSumOfConsecutive2(n) {
+    var counter = 0
+    for (i = 1; i < n / 2 + 1; i++) {
+        array = []
+        for (j = i + 1; j < n / 2 + 1; j++) {
+            array.push(j)
+            cumulative = array.reduce((a, b) => a + b)
+            simple = i + j
+            console.log(i, j, array, cumulative, simple)
+            if (cumulative + i == n || simple == n) counter++
+        }
     }
-    return false;
+    return counter
 }
+console.log(isSumOfConsecutive2(15))
